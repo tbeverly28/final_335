@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Card Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link href="/assets/styles/navbar.css" rel="stylesheet" type="text/css">
+    <link href="/assets/styles/home-style.css" rel="stylesheet" type="text/css">
+    <title>Home</title>
+</head>
+
+
+<body>
+    <header>
+        <a href="#" class="logo">The Horrors</a>
+
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="/find">Find</a>
+            <a href="/profile">Profile</a>
+        </nav>
+    </header>
+
+    <div class="welcome">
+        <h2 class="headline">
+            Welcome! (wip)
+            <br>
+            You can do this... Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            <br>
+            and uh this...Iure repellendus, animi blanditiis, vel tenetur quos, voluptatibus
+            <br>
+            and that...adipisci repellat consequatur assumenda
+        </h2>
+    </div>
+
+    <div id="search-wrap">
+        <input type="search" id="search" placeholder="Search">
+    </div>
+    <div class="movie-cards"></div>
+    <!-- templated used when movie cards autopopulated -->
+    <template id="card-template">
+        <div class="card">
+            <!-- its too expensive to keep making fetch requests for the images so im using a cute cat placeholder
+            in the future i'll try to store the images as cache -->
+            <div class="card-image-wrap">
+                <img src="/assets/images/cute cat.jpg" alt="cute cat">
+            </div>
+            <div class="card-title"></div>
+        </div>
+    </template>
+
+    <!-- Client-Side -->
+    <script>
+        // element selectors
+        const cardTemplate = document.querySelector("#card-template");
+        const cardContainer = document.querySelector(".movie-cards");
+        const searchInput = document.querySelector("#search");
+
+        // movies json
+        const escaped = '<%- escaped %>';
+        const movies = JSON.parse(escaped);
+
+        // search functionality
+        let ms = [];
+        searchInput.addEventListener("input", e => {
+            // get search value and set it to lowercase
+            const value = e.target.value.toLowerCase();
+            // hide movie if it doesnt match search
+            ms.forEach(movie => {
+                const visible = movie.title.toLowerCase().includes(value);
+                movie.element.classList.toggle("hide", !visible);
+            });
+        });
+
+        // fill cards w/ data   
+        ms = movies.map(movie => {
+            // clone card template
+            const card = cardTemplate.content.cloneNode(true).children[0];
+            // grab and set title
+            const title = card.querySelector(".card-title");
+            title.textContent = movie.title;
+            // fill container
+            cardContainer.append(card);
+            // ret obj
+            return { title: movie.title, element: card };
+        });
+    </script>
+</body>
+
+</html>

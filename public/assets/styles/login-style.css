@@ -1,0 +1,137 @@
+:root {
+  /* my colors */
+  --dark_grey: #0f0c0c;
+  --dark_grey_clear: #0f0c0c1A;
+  --clear: rgba(197, 241, 241, 0.137);
+  --grey: #8E8E8E;
+  --warm_dark_red: #290d0d;
+  --pink: #9C3D54;
+  --orange: #E2703A;
+  --yellow: #EEB76B;
+  --halloween_orange: #EB6122;
+  --ruddy_brown: #C9532C;
+  --medium_carmine: #A84535;
+  --solid_pink: #86383F;
+  --old_mauve: #652A48;
+  --american_purple: #431C52;
+  --dark_purple: #1D0D23;
+
+  --card-black_gradient: linear-gradient(0, #000000, #27262649);
+  --card-orange_gradient: linear-gradient(180deg, var(--american_purple), var(--halloween_orange));
+  --card-purple_gradient: linear-gradient(225deg, var(--solid_pink), var(--american_purple));
+}
+
+/* Montserrat Font */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+/* Scream font */
+@font-face {
+  font-family: ScreamFont;
+  src: url(/assets/fonts/screamreal/Scream-Real.ttf);
+}
+
+/* Body styling */
+body {
+  background-color: var(--dark_grey);
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+h1 {
+  font-family: ScreamFont, Arial, Helvetica, sans-serif;
+  letter-spacing: 3px;
+  font-size: 7rem;
+  font-weight: bold;
+  color: var(--halloween_orange);
+  text-align: center;
+  /* border: 1px solid hotpink; */
+  margin: 0;
+}
+
+h3 {
+  /* border: 1px solid green; */
+  text-align: center;
+  margin-top: -50px;
+  font-size: 14px;
+}
+
+/* Wrapper to center form */
+.form-wrapper {
+  display: block;
+  text-align: center;
+}
+
+/* Bordered form */
+form {
+  /* center form */
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  /* other styling */
+  border: 2px solid #f1f1f1;
+  border-radius: 20px;
+  width: 30%;
+  padding: 20px;
+}
+
+/* Login container */
+.login-container {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+/* Full-width inputs */
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  /* border: 1px solid #ccc; */
+  box-sizing: border-box;
+  background-color: #dbdbdb;
+  color: var(--dark_grey);
+  font-size: 20px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: var(--halloween_orange);
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Center the avatar image inside this container */
+.img-container {
+  padding: 8px;
+  /* border: 1px solid green; */
+}
+
+/* Avatar image */
+.avatar {
+  /* center image */
+  width: 40%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* other styling */
+  border-radius: 50%;
+  border: 3px solid var(--halloween_orange);
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}

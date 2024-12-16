@@ -1,0 +1,199 @@
+:root {
+    /* my colors */
+    --dark_grey: #0f0c0c;
+    --slightly_less_dark_grey: #1f1c1c;
+    --slightly_less_dark_grey_clear: rgba(58, 56, 56, 0.685);
+    --clear: rgba(197, 241, 241, 0.137);
+    --grey: #8E8E8E;
+    --warm_dark_red: #290d0d;
+    --pink: #9C3D54;
+    --orange: #E2703A;
+    --yellow: #EEB76B;
+    --halloween_orange: #EB6122;
+    --ruddy_brown: #C9532C;
+    --medium_carmine: #A84535;
+    --solid_pink: #86383F;
+    --old_mauve: #652A48;
+    --american_purple: #431C52;
+    --american_purple_clear: rgba(67, 28, 82, 0.534);
+    --dark_purple: #1D0D23;
+
+    --card-black_gradient: linear-gradient(0, #000000, #27262649);
+    --card-orange_gradient: linear-gradient(180deg, var(--american_purple), var(--halloween_orange));
+    --card-purple_gradient_left: linear-gradient(225deg, var(--solid_pink), var(--american_purple));
+    --card-purple_gradient_right: linear-gradient(135deg, var(--solid_pink), var(--american_purple));
+}
+
+/* Montserrat Font */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+/* Scream font */
+@font-face {
+    font-family: ScreamFont;
+    src: url(../fonts/screamreal/Scream-Real.ttf);
+}
+
+body {
+    height: 100vh;
+    background-image: var(--card-purple_gradient_right);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+.content {
+    margin-top: 8rem;
+}
+
+.sidebar {
+    background-color: var(--dark_grey);
+    /* border: 2px solid blue; */
+    border-radius: 10px;
+    width: 224px;
+    height: 825px;
+    /* fixed side bar stays in place on scroll */
+    position: fixed;
+    left: 6px;
+    /* disable horizontal scroll */
+    overflow-x: hidden;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    text-align: left;
+    font-size: 18px;
+
+}
+
+.sidebar .image-container img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 9px auto;
+    border-radius: 50%;
+    border: 5px solid var(--halloween_orange);
+}
+
+#username {
+    text-align: center;
+    font-family: ScreamFont, Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    font-size: 30px;
+}
+
+#status {
+    font-weight: 400;
+    background-color: var(--slightly_less_dark_grey);
+    border-top: 3px solid white;
+    justify-content: space-between;
+    text-align: center;
+    padding: 12px;
+    font-size: 16px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    font-weight: bold;
+    border-top: 3px solid white;
+}
+
+li {
+    padding: 5px;
+}
+
+li:nth-child(odd) {
+    background-color: var(--slightly_less_dark_grey);
+}
+
+li:hover {
+    background-color: var(--halloween_orange);
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: var(--halloween_orange);
+    color: white;
+    padding: 12px 20px;
+    margin-top: 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* movie cards content */
+.main {
+    border-radius: 10px;
+    background-color: var(--dark_grey);
+    margin-left: 260px;
+    padding: 12px;
+    height: 100%;
+}
+
+.movie {
+    background-image: var(--card-purple_gradient_right);
+    height: 200px;
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    /* border-radius: 10px; */
+}
+
+.movie img {
+    object-fit: cover;
+}
+
+.data {
+    height: 100%;
+    margin: 0 20px;
+}
+
+.title {
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    border-bottom: 3px solid white;
+}
+
+.columns {
+    display: flex;
+    /* gap: 4px; */
+}
+
+.data-container1,
+.description {
+    margin-top: 6px;
+    padding: 12px 0;
+    width: 150px;
+}
+
+.data-container1 div {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.data-container1 .year {
+    font-size: 23px;
+}
+
+.description {
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.25;
+}

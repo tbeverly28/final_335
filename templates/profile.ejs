@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Card Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link href="/assets/styles/navbar.css" rel="stylesheet" type="text/css">
+    <link href="/assets/styles/profile-style.css" rel="stylesheet" type="text/css">
+    <title>Profile</title>
+</head>
+
+<body>
+    <header>
+        <a href="/home" class="logo">The Horrors</a>
+
+        <nav class="navbar">
+            <a href="/home">Home</a>
+            <a href="/find">Find</a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="sidebar">
+            <div class="image-container">
+                <img src="/assets/images/profile-placeholder.jpeg" alt="guest icon">
+            </div>
+            <div id="username">Guest</div>
+            <div id="status">Joined Dec 16, 2024</div>
+            <div class="links">
+                <ul>
+                    <li><a href="#">Group</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Friends</a></li>
+                </ul>
+            </div>
+            <button>Share Profile</button>
+        </div>
+
+        <div class="main"> </div>
+        <!-- templated used when movie cards autopopulated -->
+        <template id="card-template">
+            <!-- Title, Poster, Year, Description, Rating, Score, Runtime -->
+            <div class="movie">
+                <img src="/assets/images/cute cat.jpg" alt="cute cat">
+                <div class="data">
+                    <div class="title"></div>
+                    <!--Add Trash can/delete icon here-->
+                    <div class="columns">
+                        <div class="data-container1">
+                            <div class="year"></div>
+                            <div class="rating"></div>
+                            <div class="runtime"></div>
+                        </div>
+                        <div class="description"></div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- Client-Side -->
+        <script>
+            // element selectors
+            const cardTemplate = document.querySelector("#card-template");
+            const cardContainer = document.querySelector(".main");
+
+            // movies json
+            const escaped = '<%- escaped %>';
+            const movies = JSON.parse(escaped);
+
+            // fill cards w/ data
+            movies.forEach(movie => {
+                // clone card template
+                const card = cardTemplate.content.cloneNode(true).children[0];
+                // grab and set data fields
+                const title = card.querySelector(".title");
+                const year = card.querySelector(".year");
+                const rating = card.querySelector(".rating");
+                const runtime = card.querySelector(".runtime");
+                const desc = card.querySelector(".description");
+
+                title.textContent = movie.title;
+                year.textContent = movie.year;
+                rating.textContent = `Rated ${movie.rating}`;
+                runtime.textContext = `Runtime ${movie.runtime}m`;
+                desc.textContent = movie.description;
+                // fill container
+                cardContainer.append(card);
+            });
+        </script>
+</body>
+
+</html>

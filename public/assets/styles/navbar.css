@@ -1,0 +1,81 @@
+:root {
+    /* my colors */
+    --dark_grey: #0f0c0c;
+    --dark_grey_clear: #0f0c0c1A;
+    --clear: rgba(197, 241, 241, 0.137);
+    --grey: #8E8E8E;
+    --warm_dark_red: #290d0d;
+    --pink: #9C3D54;
+    --orange: #E2703A;
+    --yellow: #EEB76B;
+    --halloween_orange: #EB6122;
+    --ruddy_brown: #C9532C;
+    --medium_carmine: #A84535;
+    --solid_pink: #86383F;
+    --old_mauve: #652A48;
+    --american_purple: #431C52;
+    --dark_purple: #1D0D23;
+
+    --card-black_gradient: linear-gradient(0deg, #000000, #27262649);
+    --card-orange_gradient: linear-gradient(90deg, var(--american_purple), var(--halloween_orange));
+    --card-purple_gradient: linear-gradient(225deg, var(--solid_pink), var(--american_purple));
+}
+
+/* Montserrat Font */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+/* Scream font */
+@font-face {
+    font-family: ScreamFont;
+    src: url(../fonts/screamreal/Scream-Real.ttf);
+}
+
+
+/* NAVBAR */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background-color: var(--dark_grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-size: 32px;
+    color: var(--halloween_orange);
+    text-decoration: none;
+    font-family: ScreamFont, Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    /* font-weight: bold; */
+}
+
+.navbar a {
+    position: relative;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 40px;
+    font-size: 20px;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: .3s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+}

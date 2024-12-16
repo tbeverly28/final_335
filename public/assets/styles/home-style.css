@@ -1,0 +1,120 @@
+:root {
+    /* my colors */
+    --dark_grey: #0f0c0c;
+    --dark_grey_clear: #0f0c0c1A;
+    --clear: rgba(197, 241, 241, 0.137);
+    --grey: #8E8E8E;
+    --warm_dark_red: #290d0d;
+    --pink: #9C3D54;
+    --orange: #E2703A;
+    --yellow: #EEB76B;
+    --halloween_orange: #EB6122;
+    --ruddy_brown: #C9532C;
+    --medium_carmine: #A84535;
+    --solid_pink: #86383F;
+    --old_mauve: #652A48;
+    --american_purple: #431C52;
+    --dark_purple: #1D0D23;
+
+    --card-black_gradient: linear-gradient(0, #000000, #27262649);
+    --card-orange_gradient: linear-gradient(180deg, var(--american_purple), var(--halloween_orange));
+    --card-purple_gradient: linear-gradient(225deg, var(--solid_pink), var(--american_purple));
+}
+
+/* Montserrat Font */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+/* Scream font */
+@font-face {
+    font-family: ScreamFont;
+    src: url(../fonts/screamreal/Scream-Real.ttf);
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    /* min-height: 100vh; */
+    background-image: var(--card-orange_gradient);
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* HEADLINE */
+.welcome {
+    margin: 6rem 27rem 26px;
+    color: white;
+    padding: 20px;
+}
+
+.headline {
+    text-align: center;
+}
+
+/* SEARCH */
+#search-wrap {
+    width: 1000px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#search {
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+}
+
+.movie-cards {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    gap: 1.5rem;
+    margin-top: 4rem;
+
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    width: 250px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.card-image-wrap img {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%
+}
+
+.card-title {
+    width: 100%;
+    background-color: var(--dark_grey);
+    color: white;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    border-radius: 16px;
+    /* text */
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.hide {
+    display: none;
+}

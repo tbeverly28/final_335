@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Card Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Creepster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link href="/assets/styles/navbar.css" rel="stylesheet" type="text/css">
+    <link href="/assets/styles/find-style.css" rel="stylesheet" type="text/css">
+    <title>Find</title>
+</head>
+
+<body>
+    <header>
+        <a href="/home" class="logo">The Horrors</a>
+
+        <nav class="navbar">
+            <a href="/home">Home</a>
+            <a href="#">Find</a>
+            <a href="/profile">Profile</a>
+        </nav>
+    </header>
+    <div class="card_display"></div>
+    <!-- templated used when movie cards autopopulated -->
+    <template id="card-template">
+        <!-- Title, Poster, Year, Description, Rating, Score, Runtime -->
+        <form action="/find/addtolist" method="post">
+            <div class="card">
+                <img src="/assets/images/cute cat.jpg" alt="cute cat">
+                <div class="title"></div>
+
+                <!-- hidden data so that I can send json on submit -->
+                <input type="hidden" class="jsondata" name="jsondata" value="">
+
+                <button type="submit" class="add">
+                    <!-- ADD TO LIST ICON -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="unchecked_icon">
+                        <path
+                            d="M20 2H8c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM8 16V4h12l.002 12H8z">
+                        </path>
+                        <path d="M4 8H2v12c0 1.103.897 2 2 2h12v-2H4V8zm11-2h-2v3h-3v2h3v3h2v-3h3V9h-3z"></path>
+                    </svg>
+                    <!---------------------->
+                    <!-- ICON CHECKED -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="checked_icon">
+                        <path
+                            d="M19 3H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zm-7.933 13.481-3.774-3.774 1.414-1.414 2.226 2.226 4.299-5.159 1.537 1.28-5.702 6.841z">
+                        </path>
+                    </svg>
+                    <!---------------------->
+                </button>
+                </a>
+                <div class="data">
+                    <div class="year"></div>
+                    <div class="rating"></div>
+                    <div class="runtime"></div>
+                    <p class="description"></p>
+                </div>
+            </div>
+        </form>
+    </template>
+    <button id="more-cards" onclick="loadNext()">More Movies</button>
+
+    <!-- Client Side -->
+    <script>
+        // display cards
+        const cardTemplate = document.querySelector("#card-template");
+        const cardContainer = document.querySelector(".card_display");
+        // movies json
+        const escaped = '<%- escaped %>';
+        const movies = JSON.parse(escaped);
+
+        // indexes to load
+        let start = 0;
+        let end = 5;
+
+        // initial load
+        loadCards(start, end);
+
+        // function thats called when more movies button clicked
+        function loadNext() {
+            start += 5;
+            end += 5;
+            loadCards(start, end);
+        }
+        function loadCards(s, e) {
+            // fill cards w/ data
+            for (let i = s; i < e; i++) {
+                // clone card template
+                const card = cardTemplate.content.cloneNode(true).children[0];
+                // grab and set datafields
+                const title = card.querySelector(".title");
+                const year = card.querySelector(".year");
+                const rating = card.querySelector(".rating");
+                const runtime = card.querySelector(".runtime");
+                const desc = card.querySelector(".description");
+
+                title.textContent = movies[i].title;
+                year.textContent = movies[i].year;
+                rating.textContent = `Rated ${movies[i].rating}`;
+                runtime.textContext = `Runtime ${movies[i].runtime}m`;
+                desc.textContent = movies[i].description;
+
+                // add to list activity, once clicked don't allow anymore clicks
+                const toAdd = card.querySelector('.add');
+                let clicked = false;
+
+                toAdd.addEventListener('click', () => {
+                    if (clicked) return;
+                    clicked = true;
+
+                    toAdd.classList.add('disabled');
+                });
+
+                // "jsondata for post requests"
+                card.querySelector('.jsondata').value = JSON.stringify(movies[i]);
+
+                // fill container
+                cardContainer.append(card);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+:root {
+  /* my colors */
+  --dark_grey: #0f0c0c;
+  --slightly_less_dark_grey: #1f1c1c;
+  --slightly_less_dark_grey_clear: rgba(58, 56, 56, 0.685);
+  --clear: rgba(197, 241, 241, 0.137);
+  --grey: #8E8E8E;
+  --warm_dark_red: #290d0d;
+  --pink: #9C3D54;
+  --orange: #E2703A;
+  --yellow: #EEB76B;
+  --halloween_orange: #EB6122;
+  --ruddy_brown: #C9532C;
+  --medium_carmine: #A84535;
+  --solid_pink: #86383F;
+  --old_mauve: #652A48;
+  --american_purple: #431C52;
+  --american_purple_clear: rgba(67, 28, 82, 0.534);
+  --dark_purple: #1D0D23;
+  --primary_white: rgb(240, 240, 240);
+
+  --card-black_gradient: linear-gradient(0, #000000, #27262649);
+  --card-orange_gradient: linear-gradient(180deg, var(--american_purple), var(--halloween_orange));
+  --card-purple_gradient_left: linear-gradient(225deg, var(--solid_pink), var(--american_purple));
+  --card-purple_gradient_right: linear-gradient(135deg, var(--solid_pink), var(--american_purple));
+}
+
+/* Montserrat Font */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+/* Scream font */
+@font-face {
+  font-family: ScreamFont;
+  src: url(../fonts/screamreal/Scream-Real.ttf);
+}
+
+body {
+  background-image: var(--card-purple_gradient_left);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: white;
+}
+
+/* CARDS CONTAINER */
+.card_display {
+  display: grid;
+  /* repeat with fixed fraction size */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin: 14rem 4rem 0px;
+}
+
+.card {
+  border-radius: 18px;
+  height: 36rem;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  color: var(--primary_white);
+  box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+
+  &:hover .data {
+    opacity: 1;
+    transition: opacity 0.5s .1s ease;
+  }
+
+  &:hover img {
+    opacity: 0.2;
+    transition: opacity 0.3s ease-in;
+  }
+}
+
+/* CARD IMAGE */
+.card img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+  transition: opacity .2s ease-out;
+}
+
+/* CARD TITLE */
+.title {
+  position: absolute;
+  bottom: 0;
+  margin: 14px;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* activity of add button */
+.add {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 54px;
+  height: 50px;
+  margin: 14px;
+  cursor: pointer;
+  fill: rgb(240, 240, 240);
+  border: none;
+  background: none;
+}
+
+.add .unchecked_icon:hover {
+  fill: var(--halloween_orange);
+}
+
+.add svg {
+  display: none;
+}
+
+.add .unchecked_icon {
+  display: block;
+
+}
+
+.add.disabled .unchecked_icon {
+  display: none;
+}
+
+.add.disabled .checked_icon {
+  display: block;
+  cursor: not-allowed;
+}
+
+
+
+
+
+
+
+
+/* data */
+.data {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  font-weight: 600;
+  bottom: 0;
+
+  opacity: 0;
+  transition: opacity .3s ease-out;
+}
+
+.data div {
+  margin-bottom: 6px;
+}
+
+.year {
+  font-size: 23px;
+}
+
+.description {
+  font-weight: normal;
+  font-size: 18px;
+}
+
+
+/* paragraph */
+/* .card p,
+.card a{
+  position: absolute;
+  opacity: 0;
+  max-width: 80%;
+  transition: opacity .3s ease-out;
+}
+.card p {
+  inset: auto auto 80px 30px;
+}
+.card a {
+  inset: auto auto 40px 30px;
+  color: inherit;
+  text-decoration: none;
+} */
+
+
+/* other stuff */
+#more-cards {
+  display: block;
+  margin: 18px auto;
+
+  background-color: var(--halloween_orange);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  width: 300px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Add a hover effect for buttons */
+#more-cards:hover {
+  opacity: 0.8;
+}
