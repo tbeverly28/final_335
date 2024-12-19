@@ -100,19 +100,25 @@ body {
 }
 
 .card-title {
-    width: 100%;
+    /* visual styling */
     background-color: var(--dark_grey);
     color: white;
+    border-radius: 16px;
+    /* position */
     position: absolute;
     bottom: 0;
     padding: 10px;
-    border-radius: 16px;
+    width: 100%;
+    align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     /* text */
-    font-size: 1.5rem;
     text-align: center;
     font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .hide {
